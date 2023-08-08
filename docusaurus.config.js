@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Trident-sdk-docs',
+  title: 'Trident-Java',
   tagline: '',
   favicon: 'img/tron-small-icon_red.png',
 
@@ -57,7 +57,7 @@ const config = {
       // Replace with your project's social card
       image: 'img/tron-small-icon_red.png',
       navbar: {
-        title: 'Trident-java-docs',
+        title: 'Trident-Java',
         logo: {
           alt: 'Tron Logo',
           src: 'img/tron-small-icon_red.png',
@@ -67,7 +67,7 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Documentation',
           },
           {
             type: 'docsVersionDropdown',
@@ -89,7 +89,7 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
+                label: 'Documentation',
                 to: '/docs/getting-started',
               },
             ],
