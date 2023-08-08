@@ -14,13 +14,13 @@ This page will help you get started with Trident-Java. You'll be up and running 
 
 [release note](https://github.com/tronprotocol/trident/releases/tag/0.4.0)
 
-# <b>Overview</b>
+## <b>Overview</b>
 
 trident-java is a lightweight SDK that includes libraries for working with TRON system contracts and smart contracts.
 
 trident-java makes it easy to build TRON applications with Java.
 
-# Install trident-Java
+## Install trident-Java
 
 To start using trident-java, firstly you will add the packages as your dependencies.
 
@@ -114,7 +114,7 @@ dependencies {
 </dependency>
 ```
 
-# Use trident-java
+## Use trident-java
 
 `ApiWrapper` in the package client is the entrance of the wrapped APIs and smart contract functions.
 
@@ -143,6 +143,6 @@ ApiWrapper wrapper = ApiWrapper.ofNile("hex private key");
 > 
 > Private keys are used for signing transactions. That is, you can use any hexadecimal string that meets the length rule as the private key for data inquiries.
 
-# Javadoc
+## Javadoc
 
 Functions in `core` are fully equipped with Javadoc. Generate if needed.
