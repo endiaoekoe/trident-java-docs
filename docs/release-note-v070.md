@@ -14,9 +14,9 @@ Periander, the latest Java-tron version, has introduced several optimizations to
 - Support customizable gRPC interceptors
 - Support more java-tron gRPC APIs introduced in the 4.7.2 release as follows:
 
-- cancelAllUnfreezeV2(): cancel all unstaking transactions in the waiting period.  
-- estimateEnergy (): estimate the energy required to successfully execute a smart contract transaction (parameter is Function)  
-- estimateEnergyV2(): estimate the energy required to successfully execute a smart contract transaction (parameter is callData)  
-- delegateResourceV2(): delegate bandwidth/energy to another account, new parameter lockPeriod is added, and users can specify their lock period.  
-- constantCallV2(): initiate constant contract call, support pass callData.  
-- triggerCallV2(): trigger a smart contract call, support pass callData.
+  - cancelAllUnfreezeV2(): cancel all unstaking transactions in the waiting period.  
+  - estimateEnergy (): estimate the energy required to successfully execute a smart contract transaction (parameter is Function)  
+  - estimateEnergyV2(): estimate the energy required to successfully execute a smart contract transaction (parameter is callData)  
+  - delegateResourceV2(): delegate bandwidth/energy to another account, new parameter lockPeriod is added, and users can specify their lock period.  
+  - constantCallV2(): initiate constant contract call, support pass callData.  
+  - triggerCallV2(): trigger a smart contract call, support pass callData.

@@ -6,8 +6,8 @@ sidebar_position: 1
 
 
 The main updates are to support Stake 2.0 mechanism. The staking, unstaking, and delegating query APIs are updated. Three resource management-related APIs are added to utilize the resources more flexibly and conveniently. Since the unstaking and TRX withdrawal mechanism is changed, another three APIs are integrated to implement these new functions. For more detail on Stake 2.0, please refer to <https://medium.com/tronnetwork/what-is-stake-2-0-e04f59b948a6>  
-Core:
 
+**Core**:
 - freezebalancev2: stake TRX to obtain TRON Power and a specified type of resource (bandwidth or energy)  
 - unfreezebalancev2: unstake TRX to release resource and TRON Power obtained with all corresponding votes revoked  
 - getdelegatedresourcev2: query the detail of resource delegated between two addresses  
