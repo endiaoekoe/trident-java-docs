@@ -12,7 +12,7 @@ Periander, the latest Java-tron version, has introduced several optimizations to
 **Core**:
 
 - Support customizable gRPC interceptors
-- Support more java-tron gRPC APIs introduced in the 4.7.2 release as follows:
+- Support more Java-Tron gRPC APIs introduced in the 4.7.2 release as follows:
 
   - cancelAllUnfreezeV2(): cancel all unstaking transactions in the waiting period.  
   - estimateEnergy (): estimate the energy required to successfully execute a smart contract transaction (parameter is Function)  
