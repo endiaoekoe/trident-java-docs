@@ -4,6 +4,7 @@ sidebar_position: 4
 
 # Sending Transactions
 
+
 Any operation contracting with the TRON network is a transaction. A transaction can be a TRX transfer, stake & unstake, Trigger Smart Contract, Etc.
 
 **Only resource consumption transactions are available to acquire on the chain.**
