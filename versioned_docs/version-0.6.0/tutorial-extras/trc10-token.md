@@ -265,7 +265,7 @@ createAssetIssue(ownerAddress, name, abbr, totalSupply, trxNum, icoNum, startTim
 | icoNum                  | int    | Define the price by the ratio of trx_num/num  |
 | startTime               | long   | ICO start time                                |
 | endTime                 | long   | ICO end time                                  |
-| url                     | String | Token official website url, default hexString |
+| url                     | String | Token official website URL, default hexString |
 | freeAssetNetLimit       | long   | total free bandwidth for the token            |
 | publicFreeAssetNetLimit | long   | free bandwidth for each token holder          |
 | precision               | int    | -                                             |
@@ -303,7 +303,7 @@ ff88e516799642161ca100bfcd3b67226793f003048c49e04aaaf48b8f5b6477
 
 ## participateAssetIssue
 
-Participate a token.
+Participate in an issuing of a token.
 
 ####  Usage
 
@@ -411,7 +411,7 @@ IllegalException, if fail to update asset.
 ####  Example
 
 ```
-TransactionExtention transaction = wrapper.updateAsset("TD9tMPSfBJ3To8s71vdBz2BLT2wwBNWyLc","newname","sadf", 1,2);
+TransactionExtention transaction = wrapper.updateAsset("TD9tMPSfBJ3To8s71vdBz2BLT2wwBNWyLc", "newname", "sadf", 1,2);
 Transaction signedTxn = wrapper.signTransaction(transaction);
 String ret = wrapper.broadcastTransaction(signedTxn);
 ```
