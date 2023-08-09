@@ -107,7 +107,7 @@ freezeBalance(ownerAddress, frozenBalance, frozenDuration, resourceCode, receive
 | :------------- | :----- | :---------------------------------------------------------------------- |
 | ownerAddress   | String | Owner address, HEX or Base58check format                                |
 | frozenBalance  | long   | The amount of frozen TRX, the unit is sun                               |
-| frozenDuration | long    | TRX stake duration, only be specified as 3 days                         |
+| frozenDuration | int    | TRX stake duration, only be specified as 3 days                         |
 | resourceCode   | int    | The type of the acquired resource，0 BANDWIDTH and 1 ENERGY              |
 | receiveAddress | String | Optional, the address that will receive the resource, default hexString |
 
@@ -167,7 +167,7 @@ Execution result：
 
 ##   getDelegatedResource
 
-Returns all resources delegations from an account to another account. The fromAddress can be retrieved from the GetDelegatedResourceAccountIndex API.
+Returns all resources delegations from one account to another account. The fromAddress can be retrieved from the GetDelegatedResourceAccountIndex API.
 
 ####  Usage
 
@@ -366,17 +366,18 @@ txn3 id => f8f59725c2282d5f25443e32c606c97ec30602ae0310cb562e6529f63decd4bb
 ======== Result ========
 result: true
 ```
-## delegateResource
+
+##   delegateResourceV2
 
 Delegate bandwidth or energy resources to other accounts in Stake 2.0.
 
-#### Usage
+####  Usage
 
 ```
-delegateResource( ownerAddress,  balance,  resourceCode, receiverAddress, lock)
+delegateResource( ownerAddress,  balance,  resourceCode, receiverAddress, lock, lockPeriod)
 ```
 
-#### Parameter
+####  Parameter
 
 | Parameter       | Type    | Description                                                                                                                                                                                                                                                                                                       |
 | :-------------- | :------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -385,15 +386,16 @@ delegateResource( ownerAddress,  balance,  resourceCode, receiverAddress, lock)
 | resourceCode    | int     | Resource type，0 BANDWIDTH, and 1 ENERGY                                                                                                                                                                                                                                                                           |
 | receiverAddress | String  | Receiver address of resource to be delegated to, Hex or Base58check format                                                                                                                                                                                                                                        |
 | lock            | boolean | Whether it is locked, or if it is set to true, the delegated resources cannot be undelegated within 3 days. When the lock time is not over, if the owner delegates the same type of resources using the lock to the same address, the lock time will be reset to 3 days. optional, default is 0, 0-lock, 1-unlock |
+| lockPeriod      | long    | The lockup period, the unit is block, the data type is int256,    It indicates how many blocks the resource delegating is locked before it can be undelegated                                                                                                                                                            |
 
-#### Return
+####  Return
 
 Object - TransactionExtention: unsigned transaction information.
 
-#### Example
+####  Example
 
 ```
-TransactionExtention txnExt3 =client.delegateResource("41C9B9110BD5F6697075659AB3AAF6107840A9D96D",100999990,1,"41715AE2D2B73B5B4885F480BFBA04CBE6D61E6824",false);
+TransactionExtention txnExt3 =client.delegateResourceV2("41C9B9110BD5F6697075659AB3AAF6107840A9D96D",100999990,1,"41715AE2D2B73B5B4885F480BFBA04CBE6D61E6824",false);
 System.out.println("txn3 id => " + Hex.toHexString(txnExt3.getTxid().toByteArray()));
 Transaction signedTxn3 = client.signTransaction(txnExt3);
 TransactionReturn ret3 = client.blockingStub.broadcastTransaction(signedTxn3);
@@ -407,7 +409,6 @@ txn3 id => f8f59725c2282d5f25443e32c606c97ec30602ae0310cb562e6529f63decd4bb
 ======== Result ========
 result: true
 ```
-
 
 ##   undelegateResource
 
@@ -488,6 +489,41 @@ txn5 id => d09c82ea7aa664dd7a617ee347c2e1664171a84cd674d5bd028a12ec338a2e11
 result: true
 ```
 
+##   cancelAllUnfreezeV2
+
+Cancel all the unstaking transactions in the waiting period in Stake 2.0.
+
+####  Usage
+
+```
+cancelAllUnfreezeV2( ownerAddress)
+```
+
+####  Parameter
+
+| Parameter    | Type   | Description                              |
+| :----------- | :----- | :--------------------------------------- |
+| ownerAddress | String | Owner address, Hex or Base58check format |
+
+####  Return
+
+Object - TransactionExtention: unsigned transaction information.
+
+####  Example
+
+```
+TransactionExtention txnExt3 =client.cancelAllUnfreezeV2("41C9B9110BD5F6697075659AB3AAF6107840A9D96D");
+System.out.println("txn3 id => " + Hex.toHexString(txnExt3.getTxid().toByteArray()));
+Transaction signedTxn3 = client.signTransaction(txnExt3);
+TransactionReturn ret3 = client.blockingStub.broadcastTransaction(signedTxn3);
+System.out.println("======== Result ========\n" + ret3.toString());
+```
+
+Execution result：
+
+```
+result: true
+```
 
 ##   getAvailableUnfreezeCount
 
@@ -557,7 +593,7 @@ amount => 0
 
 ##   getCanDelegatedMaxSize
 
-in Stake2.0, query the amount of delegatable resources share of the specified resource type for an address, the unit is sun.
+in Stake2.0, query the amount of delegatable resources shared of the specified resource type for an address, the unit is sun.
 
 ####  Usage
 
