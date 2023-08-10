@@ -5,7 +5,7 @@ sidebar_position: 10
 # License and Copyright
 
 
-The Trident-sdk are available under the MIT License, which permits a wide variety of uses.
+The Trident-Java is available under the MIT License, which permits a wide variety of uses.
 
 ## MIT License
 

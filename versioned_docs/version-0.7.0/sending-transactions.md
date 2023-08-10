@@ -74,7 +74,7 @@ Regardless of the binding private key, you can use any private key to sign the t
 Transaction signedTransaction = wrapper.signTransaction(transaction, SECP256K1.KeyPair);
 ```
 
-Refer to `org.tron.trident.crypto.SECP256K1` for constructing an `SECP256K1.KeyPair`.
+Refer to `org.tron.trident.crypto.SECP256K1` for constructing a `SECP256K1.KeyPair`.
 
 ## Broadcast
 

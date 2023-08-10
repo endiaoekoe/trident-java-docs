@@ -4,6 +4,7 @@ sidebar_position: 4
 
 # Sending Transactions
 
+
 Any operation contracting with the TRON network is a transaction. A transaction can be a TRX transfer, stake & unstake, Trigger Smart Contract, Etc.
 
 **Only resource consumption transactions are available to acquire on the chain.**
@@ -18,7 +19,9 @@ Create -> Sign -> Broadcast -> (wait) -> Lookup and get receipt
 
 ## Create a Transaction
 
-Each non-query function creates an unsigned transaction , for example:
+Note: from the v0.5.0 version, change the way of transaction construction from remote to local constructing, which covers most of the transaction-related APIs, and ensure the transaction won’t be maliciously modified before signing when constructing locally.
+
+Each non-query function creates an unsigned transaction locally, for example:
 
 ```java
 public TransactionExtention transfer(String fromAddress, String toAddress, long amount) throws IllegalException {
@@ -31,11 +34,8 @@ public TransactionExtention transfer(String fromAddress, String toAddress, long 
                 .setToAddress(rawTo)
                 .setAmount(amount)
                 .build();
-        TransactionExtention txnExt = blockingStub.createTransaction2(req);
+        TransactionExtention txnExt = createTransactionExtention(req, Transaction.Contract.ContractType.TransferContract);
 
-        if(SUCCESS != txnExt.getResult().getCode()){
-            throw new IllegalException(txnExt.getResult().getMessage().toStringUtf8());
-        }
         return txnExt;
     }
 ```
@@ -74,7 +74,7 @@ Regardless of the binding private key, you can use any private key to sign the t
 Transaction signedTransaction = wrapper.signTransaction(transaction, SECP256K1.KeyPair);
 ```
 
-Refer to `org.tron.trident.crypto.SECP256K1` for constructing an `SECP256K1.KeyPair`.
+Refer to `org.tron.trident.crypto.SECP256K1` for constructing a `SECP256K1.KeyPair`.
 
 ## Broadcast
 

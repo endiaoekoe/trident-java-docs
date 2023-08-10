@@ -31,7 +31,7 @@ keyPair.toPublicKey(); //String public key
 
 > 🚧 Note
 > 
-> The public key does not equal to address.
+> The public key does not equal address.
 
 - Print Base58Check & Hex address
 
@@ -44,7 +44,7 @@ keyPair.toHexAddress();
 - Use a specific public key to convert to byte\[], Base58Check, or hex address
 
 ```java
-//the parent function, returns byte[]
+//the parent function returns byte[]
 KeyPair.publicKeyToAddress(SECP256K1.PublicKey pubKey); 
   
 KeyPair.publicKeyToBase58CheckAddress(SECP256K1.PublicKey pubKey);

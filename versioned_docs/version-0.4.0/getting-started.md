@@ -4,15 +4,15 @@ sidebar_position: 1
 
 # Quickstart
 
-This page will help you get started with Trident-Java. You'll be up and running in a jiffy!.
+This page will help you get started with Trident-Java. You'll be up and running in a jiffy!
 
 > 🚧 Announcement
 > 
 > Due to the sunset of Bintray & jcenter(refer to [Into the Sunset on May 1st: Bintray, JCenter, GoCenter, and ChartCenter](https://jfrog.com/blog/into-the-sunset-bintray-jcenter-gocenter-and-chartcenter/)), the reference of `jcenter` should be replaced by `mavenCentral`. 
 > 
-> For security reasons, we will no longer perform packaging and uploading to maven. Please clone and package from [GitHub](https://github.com/tronprotocol/trident.git).
+> For security reasons, we will no longer perform packaging and uploading to Maven. Please clone and package from [GitHub](https://github.com/tronprotocol/trident.git).
 
-[release note](https://github.com/tronprotocol/trident/releases/tag/0.4.0)
+[release note](https://github.com/tronprotocol/trident/releases/tag/0.7.0)
 
 ## <b>Overview</b>
 
@@ -42,7 +42,7 @@ java {
 
 > 📘 About third-party dependencies
 > 
-> Please add third-party libraries that trident uses to your own project.
+> Please add third-party libraries that Trident uses to your own project.
 
 Add Bintray to Gradle repositories:
 
@@ -124,6 +124,15 @@ Before using functions in ApiWrapper, you should bind your private key to an Api
 
 ```java
 ApiWrapper wrapper = new ApiWrapper("grpc endpoint", "solidity grpc endpoint", "hex private key");
+```
+
+From v0.7.0, developers can add customizable gRPC interceptors in ApiWrapper constructor, enabling embedding of some customizable interceptor logic (eg: logging/metrics), before the request/after the response, of a gRPC call
+
+```java
+List<ClientInterceptor> clientInterceptors = new ArrayList<>();
+clientInterceptors.add(new GrpcClientRequestInterceptor());
+clientInterceptors.add(new GrpcClientResponseInterceptor());
+ApiWrapper wrapper = new ApiWrapper("grpc endpoint", "solidity grpc endpoint", "hex private key",clientInterceptors);
 ```
 
 Any node can be used here. Alternatively, there are hardcoded initializers for the main net, Shasta, and Nile test nets:

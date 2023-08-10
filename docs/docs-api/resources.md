@@ -167,7 +167,7 @@ Execution result：
 
 ##   getDelegatedResource
 
-Returns all resources delegations from an account to another account. The fromAddress can be retrieved from the GetDelegatedResourceAccountIndex API.
+Returns all resources delegations from one account to another account. The fromAddress can be retrieved from the GetDelegatedResourceAccountIndex API.
 
 ####  Usage
 
@@ -386,7 +386,7 @@ delegateResource( ownerAddress,  balance,  resourceCode, receiverAddress, lock, 
 | resourceCode    | int     | Resource type，0 BANDWIDTH, and 1 ENERGY                                                                                                                                                                                                                                                                           |
 | receiverAddress | String  | Receiver address of resource to be delegated to, Hex or Base58check format                                                                                                                                                                                                                                        |
 | lock            | boolean | Whether it is locked, or if it is set to true, the delegated resources cannot be undelegated within 3 days. When the lock time is not over, if the owner delegates the same type of resources using the lock to the same address, the lock time will be reset to 3 days. optional, default is 0, 0-lock, 1-unlock |
-| lockPeriod      | long    | The lockup period, unit is blocks, data type is int256,    It indicates how many blocks the resource delegating is locked before it can be undelegated                                                                                                                                                            |
+| lockPeriod      | long    | The lockup period, the unit is block, the data type is int256,    It indicates how many blocks the resource delegating is locked before it can be undelegated                                                                                                                                                            |
 
 ####  Return
 
@@ -593,7 +593,7 @@ amount => 0
 
 ##   getCanDelegatedMaxSize
 
-in Stake2.0, query the amount of delegatable resources share of the specified resource type for an address, the unit is sun.
+in Stake2.0, query the amount of delegatable resources shared of the specified resource type for an address, the unit is sun.
 
 ####  Usage
 
