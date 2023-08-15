@@ -119,7 +119,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Trident-Java, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} TRON Network Limited, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
